@@ -36,6 +36,16 @@
       Σεμινάριο "Ευέλικτη Λιτή Επιχείρηση"
     </h1>
 
+    <!-- Image Section -->
+    <div class="mb-8">
+      <img
+        src="https://changeland.eu/wp-content/uploads/2022/05/%CE%A3%CE%B5%CE%BC%CE%B9%CE%BD%CE%AC%CF%81%CE%B9%CE%B1-Changeland.jpg" 
+        alt="Σεμινάριο εικόνα"
+        class="rounded-lg shadow-md w-full"
+      />
+    </div>
+
+ 
     <p class="text-center text-lg  mb-8" style="color: white;">
         Συμπληρώστε τα στοιχεία σας, τρόπο πληρωμής, και προχωρήστε στην πληρωμή
     </p>
@@ -102,7 +112,7 @@
 
         <!-- Amount -->
         <label class="block text-gray-700 font-medium">
-          Ποσό σε ευρώ σύμφωνα με την προσφορά που έχετε λάβει <span class="text-red-500">*</span>
+          Ποσό σε ευρώ βάση της προσφοράς που λάβατε <span class="text-red-500">*</span>
           <input type="text" id="amount" name="amount" 
             class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
             min="0" step="0.01" required>
@@ -114,7 +124,7 @@
           <div class="flex items-center space-x-4 mt-2">
             <label class="flex items-center">
               <input type="radio" id="bankTransfer" name="paymentMethod" value="bank" 
-                class="text-blue-500 focus:ring-blue-500" required>
+                class="text-blue-500 focus:ring-blue-500" required checked>
               <span class="ml-2 text-gray-700">Κατάθεση σε λογαριασμό Τράπεζας Πειραιώς</span>
             </label>
           </div>
@@ -188,12 +198,13 @@
         </div>
   
 
-      <div class="mt-6 text-center">
-  <button type="submit" 
-    class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
-    Ολοκλήρωση κράτησης της θέσης μου
-  </button>
-</div>
+        <!-- Submit Button -->
+        <div class="mt-6 text-center">
+            <button type="submit" 
+              class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
+              Ολοκλήρωση κράτησης της θέσης μου
+            </button>
+          </div>
       </form>
     </div>
   </div>
@@ -202,8 +213,13 @@
   <script>
     const form = document.getElementById('webhookForm');
     const proofUpload = document.getElementById('proofUpload');
+    const bankTransfer = document.getElementById('bankTransfer');
+    const bankDetails = document.getElementById('bankDetails');
     const proofField = document.getElementById('proof');
     const fileDisplay = document.getElementById('fileDisplay');
+  
+    // Automatically show bank details since it's the only option
+    bankDetails.style.display = 'block';
   
     proofField.addEventListener('change', function () {
       if (proofField.files.length > 0) {
@@ -222,7 +238,7 @@
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       const formData = new FormData(form);
-      const webhookUrl = 'https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc';
+      const webhookUrl = 'https://hook.eu2.make.com/v8epurteczh6vda4yxw4e7585xnndahe';
   
       try {
         // Trigger webhook before redirect
@@ -236,13 +252,12 @@
           window.location.href = 'https://changeland.github.io/thankyou/';
         } else {
           console.error('Webhook failed:', response.statusText);
-          alert('Υπήρξε πρόβλημα με την υποβολή. Παρακαλώ δοκιμάστε ξανά.');
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Υπήρξε πρόβλημα με την υποβολή. Παρακαλώ δοκιμάστε ξανά.');
       }
     });
   </script>
 </body>
 </html>
+Update amount label to reflect offer price
