@@ -112,7 +112,7 @@
 
         <!-- Amount -->
         <label class="block text-gray-700 font-medium">
-          Ποσό σε ευρώ (αντιστοιχεί στο ποσό που γράφει η προσφορά) <span class="text-red-500">*</span>
+          Ποσό σε ευρώ 180€ <span class="text-red-500">*</span>
           <input type="text" id="amount" name="amount" 
             class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
             min="0" step="0.01" required>
@@ -123,31 +123,15 @@
           <legend class="block text-gray-700 font-medium">Τρόπος πληρωμής: <span class="text-red-500">*</span></legend>
           <div class="flex items-center space-x-4 mt-2">
             <label class="flex items-center">
-              <input type="radio" id="cardPayment" name="paymentMethod" value="card" 
-                class="text-blue-500 focus:ring-blue-500" required>
-              <span class="ml-2 text-gray-700">Πληρωμή με κάρτα</span>
-            </label>
-            <label class="flex items-center">
               <input type="radio" id="bankTransfer" name="paymentMethod" value="bank" 
-                class="text-blue-500 focus:ring-blue-500" required>
+                class="text-blue-500 focus:ring-blue-500" required checked>
               <span class="ml-2 text-gray-700">Κατάθεση σε λογαριασμό Τράπεζας Πειραιώς</span>
             </label>
           </div>
         </fieldset>
 
-        <!-- Payment Link Section -->
-        <div id="paymentLink" style="display: none;" class="mt-4">
-            <div class="bank-details" style="color: black;">
-                <h1 style="color: black; text-align: center;"><b>Πληρωμή με Κάρτα</b></h1>
-                <br>
-                <p style="text-align: center;">
-                    <a href="https://checkout.revolut.com/pay/2c211a66-cfe3-4201-be0e-6a71b5709e4c" target="_blank" class="text-blue-500 underline">Κάντε κλικ εδώ για να πραγματοποιήσετε την πληρωμή με κάρτα</a>
-                </p>
-            </div>
-        </div>
-
         <!-- Bank Details Section -->
-        <div id="bankDetails" style="display: none;" class="mt-4">
+        <div id="bankDetails" class="mt-4">
             <div class="bank-details" style="color: black;">
                 <h1 style="color: black; text-align: center;"><b>Στοιχεία Τράπεζας</b></h1>
                 <br>
@@ -214,12 +198,13 @@
         </div>
   
 
-      <div class="mt-6 text-center">
-  <button type="submit" 
-    class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
-    Ολοκλήρωση κράτησης της θέσης μου
-  </button>
-</div>
+        <!-- Submit Button -->
+        <div class="mt-6 text-center">
+            <button type="submit" 
+              class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
+              Ολοκλήρωση κράτησης της θέσης μου
+            </button>
+          </div>
       </form>
     </div>
   </div>
@@ -228,22 +213,13 @@
   <script>
     const form = document.getElementById('webhookForm');
     const proofUpload = document.getElementById('proofUpload');
-    const cardPayment = document.getElementById('cardPayment');
     const bankTransfer = document.getElementById('bankTransfer');
-    const paymentLink = document.getElementById('paymentLink');
     const bankDetails = document.getElementById('bankDetails');
     const proofField = document.getElementById('proof');
     const fileDisplay = document.getElementById('fileDisplay');
   
-    form.addEventListener('change', function () {
-      if (cardPayment.checked) {
-        paymentLink.style.display = 'block';
-        bankDetails.style.display = 'none';
-      } else if (bankTransfer.checked) {
-        paymentLink.style.display = 'none';
-        bankDetails.style.display = 'block';
-      }
-    });
+    // Automatically show bank details since it's the only option
+    bankDetails.style.display = 'block';
   
     proofField.addEventListener('change', function () {
       if (proofField.files.length > 0) {
@@ -284,3 +260,4 @@
   </script>
 </body>
 </html>
+Αφαίρεση επιλογής πληρωμής με κάρτα
