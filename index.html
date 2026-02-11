@@ -1,461 +1,248 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Αγορά Σεμιναρίου - Changeland Consulting</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e8d5b7 0%, #d4a574 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            color: #8B4513;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e8d5b7;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        label .required {
-            color: #dc3545;
-            margin-left: 3px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: #8B4513;
-            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
-        }
-
-        .file-upload-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .file-upload-input {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .file-upload-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            border: 2px dashed #8B4513;
-            border-radius: 8px;
-            background: #f9f9f9;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .file-upload-label:hover {
-            background: #f0f0f0;
-            border-color: #A0522D;
-        }
-
-        .file-upload-text {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .file-name {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #28a745;
-            font-weight: 600;
-        }
-
-        .bank-details {
-            background: #f8f9fa;
-            border: 2px solid #8B4513;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .bank-details h3 {
-            color: #8B4513;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .bank-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .bank-table td {
-            padding: 10px;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .bank-table td:first-child {
-            font-weight: 600;
-            color: #495057;
-            width: 40%;
-        }
-
-        .bank-table td:last-child {
-            color: #212529;
-        }
-
-        .bank-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 30px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(139, 69, 19, 0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .error-message {
-            color: #dc3545;
-            font-size: 13px;
-            margin-top: 5px;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                padding: 20px;
-            }
-
-            .header h1 {
-                font-size: 22px;
-            }
-
-            .bank-table td {
-                font-size: 14px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ασφαλής σελίδα πληρωμής</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>© CHANGELAND</h1>
-            <p>Αγορά Σεμιναρίου</p>
-        </div>
+<style>
+    h1,h2{
+        color: white;
+    }
+  .bank-details {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+</style>
+<body class="bg-gray-100" style="background-color: rgb(205, 175, 129);">
+  <div class="max-w-3xl mx-auto p-6">
 
-        <div class="content">
-            <p style="text-align: center; color: #666; margin-bottom: 30px;">
-                Συμπληρώστε τα στοιχεία σας, επιλέξτε τρόπο πληρωμής, και προχωρήστε στην πληρωμή
-            </p>
+    <!-- Logo Section -->
+    <div class="text-center mb-8">
+        <img
+          src="https://changeland.com/wp-content/uploads/2019/09/CH-Changeland-%CE%9F%CF%81%CE%B9%CE%B6%CF%8C%CE%BD%CF%84%CE%B9%CE%BF-%CE%91%CF%81%CE%BD%CE%B7%CF%84%CE%B9%CE%BA%CF%8C600px.png"
+          alt="Changeland Logo"
+          class="max-w-xs mx-auto"
+        />
+      </div>
+    <!-- Page Title -->
+    <h1 class="text-3xl font-bold text-center  mb-8">
+      Σεμινάριο "Ευέλικτη Λιτή Επιχείρηση"
+    </h1>
 
-            <form id="paymentForm">
-                <h2 class="section-title">Υποβάλετε τα στοιχεία σας</h2>
+    <p class="text-center text-lg  mb-8" style="color: white;">
+        Συμπληρώστε τα στοιχεία σας, τρόπο πληρωμής, και προχωρήστε στην πληρωμή
+    </p>
 
-                <div class="form-group">
-                    <label for="email">Email (προσοχή: συμπλήρωσε το email όπου λάβατε την προσφορά μας)<span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="error-message" id="emailError">Παρακαλώ εισάγετε έγκυρο email</div>
-                </div>
+    <!-- Form -->
+    <div class="bg-white shadow-lg rounded-lg p-8" style="background-color:rgb(238, 218, 197);color: white;">
+      <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Υποβάλετε τα στοιχεία σας</h3>
+      <form id="webhookForm" class="space-y-6" >
+        <!-- Email -->
+        <label class="block text-gray-700 font-medium">
+         Email (προσοχή: συμπλήρωσε το email όπου λάβατε την προσφορά μας) <span class="text-red-500">*</span>
+          <input type="email" id="email" name="email" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="firstName">Όνομα<span class="required">*</span></label>
-                    <input type="text" id="firstName" name="firstName" required>
-                    <div class="error-message" id="firstNameError">Το όνομα είναι υποχρεωτικό</div>
-                </div>
+        <!-- First Name -->
+        <label class="block text-gray-700 font-medium">
+          Όνομα συμμετέχοντα <span class="text-red-500">*</span>
+          <input type="text" id="firstName" name="firstName" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="lastName">Επίθετο<span class="required">*</span></label>
-                    <input type="text" id="lastName" name="lastName" required>
-                    <div class="error-message" id="lastNameError">Το επίθετο είναι υποχρεωτικό</div>
-                </div>
+        <!-- Last Name -->
+        <label class="block text-gray-700 font-medium">
+          Επίθετο συμμετέχοντα <span class="text-red-500">*</span>
+          <input type="text" id="lastName" name="lastName" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="vat">Εταιρικό ΑΦΜ για το τιμολόγιο σας (EL + 9 ψηφία)<span class="required">*</span></label>
-                    <input type="text" id="vat" name="vat" placeholder="EL123456789" required>
-                    <div class="error-message" id="vatError">Το ΑΦΜ πρέπει να είναι EL + 9 ψηφία</div>
-                </div>
+        <!-- VAT -->
+        <label class="block text-gray-700 font-medium">
+          Εταιρικό ΑΦΜ για το τιμολόγιο σας (EL + 9 ψηφία) <span class="text-red-500">*</span>
+          <input type="text" id="vat" name="vat" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="companyName">Επωνυμία επιχείρησης<span class="required">*</span></label>
-                    <input type="text" id="companyName" name="companyName" required>
-                    <div class="error-message" id="companyNameError">Η επωνυμία είναι υποχρεωτική</div>
-                </div>
+        <!-- Company Name -->
+        <label class="block text-gray-700 font-medium">
+          Επωνυμία επιχείρησης <span class="text-red-500">*</span>
+          <input type="text" id="companyName" name="companyName" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="address">Διεύθυνση (Οδός και Αριθμός)<span class="required">*</span></label>
-                    <input type="text" id="address" name="address" required>
-                    <div class="error-message" id="addressError">Η διεύθυνση είναι υποχρεωτική</div>
-                </div>
+        <!-- Address -->
+        <label class="block text-gray-700 font-medium">
+          Διεύθυνση (Οδός και Αριθμός) <span class="text-red-500">*</span>
+          <input type="text" id="address" name="address" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="city">Πόλη<span class="required">*</span></label>
-                    <input type="text" id="city" name="city" required>
-                    <div class="error-message" id="cityError">Η πόλη είναι υποχρεωτική</div>
-                </div>
+        <!-- City -->
+        <label class="block text-gray-700 font-medium">
+          Πόλη <span class="text-red-500">*</span>
+          <input type="text" id="city" name="city" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="postalCode">Ταχυδρομικός Κώδικας<span class="required">*</span></label>
-                    <input type="text" id="postalCode" name="postalCode" required>
-                    <div class="error-message" id="postalCodeError">Ο ταχυδρομικός κώδικας είναι υποχρεωτικός</div>
-                </div>
+        <!-- Postal Code -->
+        <label class="block text-gray-700 font-medium">
+          Ταχυδρομικός Κώδικας <span class="text-red-500">*</span>
+          <input type="text" id="postalCode" name="postalCode" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </label>
 
-                <div class="form-group">
-                    <label for="amount">Ποσό σε ευρώ<span class="required">*</span></label>
-                    <input type="number" id="amount" name="amount" min="1" step="0.01" required>
-                    <div class="error-message" id="amountError">Το ποσό είναι υποχρεωτικό</div>
-                </div>
+        <!-- Amount -->
+        <label class="block text-gray-700 font-medium">
+          Ποσό σε ευρώ σύμφωνα με την προσφορά που έχετε λάβει <span class="text-red-500">*</span>
+          <input type="text" id="amount" name="amount" 
+            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            min="0" step="0.01" required>
+        </label>
 
-                <h2 class="section-title">Τρόπος πληρωμής</h2>
+        <!-- Payment Method -->
+        <fieldset class="mt-4">
+          <legend class="block text-gray-700 font-medium">Τρόπος πληρωμής: <span class="text-red-500">*</span></legend>
+          <div class="flex items-center space-x-4 mt-2">
+            <label class="flex items-center">
+              <input type="radio" id="bankTransfer" name="paymentMethod" value="bank" 
+                class="text-blue-500 focus:ring-blue-500" required>
+              <span class="ml-2 text-gray-700">Κατάθεση σε λογαριασμό Τράπεζας Πειραιώς</span>
+            </label>
+          </div>
+        </fieldset>
 
-                <div class="bank-details">
-                    <h3>Στοιχεία Τράπεζας</h3>
-                    <table class="bank-table">
-                        <tr>
-                            <td>IBAN</td>
-                            <td>GR65 0171 6040 0066 0415 1470 208</td>
-                        </tr>
-                        <tr>
-                            <td>Δικαιούχος</td>
-                            <td>CHANGELAND CONSULTING IKE</td>
-                        </tr>
-                        <tr>
-                            <td>ΑΦΜ Δικαιούχου</td>
-                            <td>801558738</td>
-                        </tr>
-                        <tr>
-                            <td>Διεύθυνση</td>
-                            <td>Λ. Συγγρού 196, Καλλιθέα 17671, Αττική Ελλάδα</td>
-                        </tr>
-                        <tr>
-                            <td>Αιτιολογία</td>
-                            <td>Επαγγελματικό / Εταιρικό ΑΦΜ, Ονοματεπώνυμο</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="form-group">
-                    <label for="proofFile">Φορτώστε αποδεικτικό<span class="required">*</span></label>
-                    <div class="file-upload-wrapper">
-                        <input type="file" id="proofFile" name="proofFile" class="file-upload-input" accept="image/*,.pdf" required>
-                        <label for="proofFile" class="file-upload-label">
-                            <div class="file-upload-text">
-                                📎 Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε
-                            </div>
-                        </label>
-                    </div>
-                    <div class="file-name" id="fileName"></div>
-                    <div class="error-message" id="fileError">Το αποδεικτικό πληρωμής είναι υποχρεωτικό</div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">Υποβολή</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // File upload handling
-        const fileInput = document.getElementById('proofFile');
-        const fileName = document.getElementById('fileName');
-
-        fileInput.addEventListener('change', function() {
-            if (this.files && this.files[0]) {
-                fileName.textContent = `✓ Επιλέχθηκε αρχείο: ${this.files[0].name}`;
-            }
-        });
-
-        // Form submission
-        const form = document.getElementById('paymentForm');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();
-
-            // Validation
-            let isValid = true;
-
-            // Email validation
-            const email = document.getElementById('email').value;
-            if (!email || !email.includes('@')) {
-                document.getElementById('emailError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('emailError').style.display = 'none';
-            }
-
-            // VAT validation (EL + 9 digits)
-            const vat = document.getElementById('vat').value;
-            const vatRegex = /^EL\d{9}$/;
-            if (!vatRegex.test(vat)) {
-                document.getElementById('vatError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('vatError').style.display = 'none';
-            }
-
-            // File validation
-            if (!fileInput.files || !fileInput.files[0]) {
-                document.getElementById('fileError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('fileError').style.display = 'none';
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Παρακαλώ περιμένετε...';
-
-            try {
-                // Convert file to base64
-                const file = fileInput.files[0];
-                const reader = new FileReader();
-                
-                reader.onloadend = async function() {
-                    const base64File = reader.result;
+        <!-- Bank Details Section -->
+        <div id="bankDetails" class="mt-4">
+            <div class="bank-details" style="color: black;">
+                <h1 style="color: black; text-align: center;"><b>Στοιχεία Τράπεζας</b></h1>
+                <br>
+                <table style="margin-left: 10px;">
+                  <tbody>
+                        
+                    <tr>
+                        <td><p><strong>ΙΒΑΝ</strong></p></td>
+                        <td><p>GR65 0171 6040 0066 0415 1470 208</p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Δικαιούχος</strong></p></td>
+                        <td><p>CHANGELAND CONSULTING IKE</p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>ΑΦΜ Δικαιούχου</strong></p></td>
+                        <td><p>801558738</p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
                     
-                    // Prepare JSON data
-                    const jsonData = {
-                        email: document.getElementById('email').value,
-                        firstName: document.getElementById('firstName').value,
-                        lastName: document.getElementById('lastName').value,
-                        vat: document.getElementById('vat').value,
-                        companyName: document.getElementById('companyName').value,
-                        address: document.getElementById('address').value,
-                        city: document.getElementById('city').value,
-                        postalCode: document.getElementById('postalCode').value,
-                        amount: document.getElementById('amount').value,
-                        proofFile: base64File,
-                        fileName: file.name,
-                        formType: 'seminar',
-                        timestamp: new Date().toISOString()
-                    };
+                    <tr>
+                        <td><p><strong>Διεύθυνση</strong></p></td>
+                        <td><p> Λ. Συγγρού 196, Καλλιθέα 17671, Αττική, Ελλάδα</p></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><p><strong>Αιτιολογία</strong></p></td>
+                        <td><p>Επαγγελματικό / Εταιρικό ΑΦΜ, Ονοματεπώνυμο</p></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
 
-                    try {
-                        // Send to webhook
-                        const response = await fetch('https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(jsonData)
-                        });
+        <!-- Proof Upload Section -->
+        <div id="proofUpload" class="mt-4">
+            <label class="block text-gray-700 font-medium">
+            Φορτώστε αποδεικτικό <span class="text-red-500">*</span>
+            </label>
+            <br>
+            <div class="relative flex items-center justify-center border-dashed border-2 border-gray-300 p-4 rounded-lg bg-gray-50">
+            <input
+                type="file"
+                id="proof"
+                name="proof"
+                class="absolute inset-0 opacity-0 cursor-pointer"
+                required
+            />
+            <div id="fileDisplay" class="text-center">
+                <p class="text-gray-500 font-medium">Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε</p>
+            </div>
+            </div>
+        </div>
+  
 
-                        if (response.ok) {
-                            // Redirect to thank you page
-                            window.location.href = 'https://changeland.github.io/thankyou/';
-                        } else {
-                            console.error('Webhook failed:', response.statusText);
-                            alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
-                            submitBtn.disabled = false;
-                            submitBtn.textContent = 'Υποβολή';
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Υποβολή';
-                    }
-                };
-                
-                reader.readAsDataURL(file);
+      <div class="mt-6 text-center">
+  <button type="submit" 
+    class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
+    Ολοκλήρωση κράτησης της θέσης μου
+  </button>
+</div>
+      </form>
+    </div>
+  </div>
 
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Υποβολή';
-            }
+  <!-- Script -->
+  <script>
+    const form = document.getElementById('webhookForm');
+    const proofUpload = document.getElementById('proofUpload');
+    const proofField = document.getElementById('proof');
+    const fileDisplay = document.getElementById('fileDisplay');
+  
+    proofField.addEventListener('change', function () {
+      if (proofField.files.length > 0) {
+        const fileName = proofField.files[0].name;
+        fileDisplay.innerHTML = `
+          <p class="text-gray-700 font-medium">Selected file:</p>
+          <p class="text-gray-900 font-semibold">${fileName}</p>
+        `;
+      } else {
+        fileDisplay.innerHTML = `
+          <p class="text-gray-500 font-medium">Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε</p>
+        `;
+      }
+    });
+  
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const webhookUrl = 'https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc';
+  
+      try {
+        // Trigger webhook before redirect
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          body: formData
         });
-    </script>
+  
+        if (response.ok) {
+          // Redirect to thank you page
+          window.location.href = 'https://changeland.github.io/thankyou/';
+        } else {
+          console.error('Webhook failed:', response.statusText);
+          alert('Υπήρξε πρόβλημα με την υποβολή. Παρακαλώ δοκιμάστε ξανά.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Υπήρξε πρόβλημα με την υποβολή. Παρακαλώ δοκιμάστε ξανά.');
+      }
+    });
+  </script>
 </body>
 </html>
