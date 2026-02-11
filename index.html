@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ασφαλής σελίδα πληρωμής</title>
+  <title>Ασφαλής σελίδα πληρωμής - Accelerator</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
 <style>
     h1,h2{
         color: white;
@@ -19,103 +18,400 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
+        .my-greek-form {
+  font-family: Arial, "Noto Sans", sans-serif !important;
+  color: #000 !important;
+  background-color: #fff !important;
+  direction: ltr;
+  unicode-bidi: normal;
+  padding: 15px;
+  line-height: 1.6;
+  white-space: normal;
+  all: unset;
+  all: revert;
+}
+
+.my-greek-form * {
+  font-family: inherit !important;
+  color: inherit !important;
+  background: transparent !important;
+  all: unset;
+  all: revert;
+}
+
+.my-greek-form .main-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+.my-greek-form .subtitle {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 1em;
+}
+
+.my-greek-form .card-link {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #0078d4;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.my-greek-form .card-link:hover {
+  background-color: #005ea2;
+}
+
+ .form-container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .payment-section {
+            border: 2px solid #000;
+            height: 50px;
+            display: flex;
+        }
+        
+        .payment-method {
+            width: 50%;
+            padding: 8px;
+            border-right: 2px solid #000;
+            font-weight: bold;
+        }
+        
+        .bank-deposit {
+            width: 50%;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .title-section {
+            border: 2px solid #000;
+            border-top: none;
+            text-align: center;
+            padding: 12px;
+            background-color: #f0f0f0;
+        }
+        
+        .main-title {
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 10px;
+            color: #333;
+        }
+        
+        .banks-section {
+            border: 2px solid #000;
+            border-top: none;
+            display: flex;
+        }
+        
+        .bank-column {
+            width: 50%;
+            border-right: 2px solid #000;
+        }
+        
+        .bank-column:last-child {
+            border-right: none;
+        }
+        
+        .bank-header {
+            background-color: #e0e0e0;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+        
+        .bank-content {
+            padding: 0;
+        }
+        
+        .bank-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+            min-height: 35px;
+        }
+        
+        .bank-row:last-child {
+            border-bottom: none;
+        }
+        
+        .bank-label {
+            width: 35%;
+            padding: 6px 8px;
+            font-weight: bold;
+            border-right: 1px solid #000;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bank-value {
+            width: 65%;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+        
+        .bank-name {
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .iban-value {
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .company-section {
+            border: 2px solid #000;
+            border-top: none;
+        }
+        
+        .company-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+            min-height: 40px;
+        }
+        
+        .company-row:last-child {
+            border-bottom: none;
+        }
+        
+        .company-label {
+            width: 150px;
+            padding: 8px;
+            font-weight: bold;
+            border-right: 2px solid #000;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+        }
+        
+        .company-value {
+            flex: 1;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .company-name {
+            font-weight: bold;
+        }
+        
+        .company-subtitle {
+            font-size: 10px;
+            color: #666;
+            display: block;
+        }
+        
+        .instructions {
+            padding: 15px;
+            font-size: 10px;
+            line-height: 1.4;
+            border: 2px solid #000;
+            border-top: none;
+        }
+
+        .point-one {
+            font-weight: bold;
+        }
+
+        .instructions p {
+            margin: 4px 0;
+        }
+        
+        .security-underline {
+            text-decoration: underline;
+        }
+        
+        .submit-highlight {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        .final-note {
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+        .payment-method-section {
+            border: 2px solid #000;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-method-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .required-asterisk {
+            color: red;
+        }
+        
+        .payment-option {
+            font-size: 11px;
+            color: #333;
+        }
+        
+        .main-title-section {
+            border: 2px solid #000;
+            text-align: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        .card-link-section {
+            border: 2px solid #000;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+       .card-link {
+            color: #0066cc;
+            text-decoration: underline;
+            font-size: 11px;
+        }
+
+        .card-link-section a {
+            color: #0066cc !important;
+            text-decoration: underline !important;
+            font-size: 11px !important;
+        }
+        
+        .card-link:hover {
+            color: #004499;
+        }
+
+        .instructions-section {
+            border: 2px solid #000;
+            padding: 15px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .instruction-paragraph {
+            margin-bottom: 12px;
+        }
+        
+        .final-notec {
+            margin-top: 15px;
+            padding-top: 10px;
+        }
+        
 </style>
+</head>
+
 <body class="bg-gray-100" style="background-color: rgb(205, 175, 129);">
   <div class="max-w-3xl mx-auto p-6">
-
     <!-- Logo Section -->
     <div class="text-center mb-8">
-        <img
-          src="https://changeland.com/wp-content/uploads/2019/09/CH-Changeland-%CE%9F%CF%81%CE%B9%CE%B6%CF%8C%CE%BD%CF%84%CE%B9%CE%BF-%CE%91%CF%81%CE%BD%CE%B7%CF%84%CE%B9%CE%BA%CF%8C600px.png"
-          alt="Changeland Logo"
-          class="max-w-xs mx-auto"
-        />
-      </div>
-    <!-- Page Title -->
-    <h1 class="text-3xl font-bold text-center  mb-8">
-      Σεμινάριο "Ευέλικτη Λιτή Επιχείρηση"
+      <img src="https://changeland.com/wp-content/uploads/2019/09/CH-Changeland-%CE%9F%CF%81%CE%B9%CE%B6%CF%8C%CE%BD%CF%84%CE%B9%CE%BF-%CE%91%CF%81%CE%BD%CE%B7%CF%84%CE%B9%CE%BA%CF%8C600px.png" alt="Changeland Logo" class="max-w-xs mx-auto">
+    </div>
+    
+    <h1 class="text-xl font-bold mb-5" style="text-align: center;">
+        Αγορά προγράμματος εκπαίδευσης & καθοδήγησης - Accelerator
     </h1>
 
     <!-- Image Section -->
     <div class="mb-8">
-      <img
-        src="https://changeland.eu/wp-content/uploads/2022/05/%CE%A3%CE%B5%CE%BC%CE%B9%CE%BD%CE%AC%CF%81%CE%B9%CE%B1-Changeland.jpg" 
-        alt="Σεμινάριο εικόνα"
-        class="rounded-lg shadow-md w-full"
-      />
+      <img src="https://changeland.eu/wp-content/uploads/2022/05/%CE%A3%CE%B5%CE%BC%CE%B9%CE%BD%CE%AC%CF%81%CE%B9%CE%B1-Changeland.jpg" alt="Σεμινάριο εικόνα" class="rounded-lg shadow-md w-full">
     </div>
 
- 
-    <p class="text-center text-lg  mb-8" style="color: white;">
-        Συμπληρώστε τα στοιχεία σας, τρόπο πληρωμής, και προχωρήστε στην πληρωμή
+    <!-- Heading Below Image -->
+    <p class="text-center text-lg mb-8" style="color: white;">
+        Συμπληρώστε τα στοιχεία σας, επιλέξτε πακέτο υπηρεσιών, τρόπο πληρωμής, και προχωρήστε στην πληρωμή
     </p>
 
     <!-- Form -->
     <div class="bg-white shadow-lg rounded-lg p-8" style="background-color:rgb(238, 218, 197);color: white;">
       <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Υποβάλετε τα στοιχεία σας</h3>
-      <form id="webhookForm" class="space-y-6" >
+      <form id="webhookForm" class="space-y-6">
         <!-- Email -->
         <label class="block text-gray-700 font-medium">
-         Email (προσοχή: συμπλήρωσε το email όπου λάβατε την προσφορά μας) <span class="text-red-500">*</span>
-          <input type="email" id="email" name="email" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-        </label>
-
-        <!-- First Name -->
-        <label class="block text-gray-700 font-medium">
-          Όνομα συμμετέχοντα <span class="text-red-500">*</span>
-          <input type="text" id="firstName" name="firstName" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-        </label>
-
-        <!-- Last Name -->
-        <label class="block text-gray-700 font-medium">
-          Επίθετο συμμετέχοντα <span class="text-red-500">*</span>
-          <input type="text" id="lastName" name="lastName" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          Email (προσοχή: συμπλήρωσε το email όπου λάβατε την προσφορά μας) <span class="text-red-500">*</span>
+          <input type="email" id="email" name="email" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- VAT -->
         <label class="block text-gray-700 font-medium">
           Εταιρικό ΑΦΜ για το τιμολόγιο σας (EL + 9 ψηφία) <span class="text-red-500">*</span>
-          <input type="text" id="vat" name="vat" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <input type="text" id="vat" name="vat" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- Company Name -->
         <label class="block text-gray-700 font-medium">
           Επωνυμία επιχείρησης <span class="text-red-500">*</span>
-          <input type="text" id="companyName" name="companyName" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <input type="text" id="companyName" name="companyName" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- Address -->
         <label class="block text-gray-700 font-medium">
           Διεύθυνση (Οδός και Αριθμός) <span class="text-red-500">*</span>
-          <input type="text" id="address" name="address" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <input type="text" id="address" name="address" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- City -->
         <label class="block text-gray-700 font-medium">
           Πόλη <span class="text-red-500">*</span>
-          <input type="text" id="city" name="city" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <input type="text" id="city" name="city" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- Postal Code -->
         <label class="block text-gray-700 font-medium">
           Ταχυδρομικός Κώδικας <span class="text-red-500">*</span>
-          <input type="text" id="postalCode" name="postalCode" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <input type="text" id="postalCode" name="postalCode" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
+
+        <!-- Service -->
+        <label class="block text-gray-700 font-medium">
+            Εκπαιδευτική υπηρεσία στην οποία αφορά η πληρωμή σας <span class="text-red-500">*</span>
+          <select id="amount" name="service" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <option value="Accelerator">Accelerator</option>
+          </select>
+        </label>
+
+        <!-- Payment Option -->
+        <fieldset class="mt-4">
+            <legend class="block text-gray-700 font-medium">
+              Τι πληρώνετε: <span class="text-red-500">*</span>
+            </legend>
+            <div class="flex flex-col items-start space-y-2 mt-2">
+              <label class="flex items-center">
+                <input type="radio" id="Εξόφληση" name="payment_option" value="Εξόφληση" class="text-blue-500 focus:ring-blue-500" required>
+                <span class="ml-2 text-gray-700">Εξόφληση</span>
+              </label>
+            </div>
+        </fieldset>          
 
         <!-- Amount -->
         <label class="block text-gray-700 font-medium">
-          Ποσό σε ευρώ βάση της προσφοράς που λάβατε <span class="text-red-500">*</span>
-          <input type="text" id="amount" name="amount" 
-            class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-            min="0" step="0.01" required>
+            Ποσό σε ευρώ (αντιστοιχεί στο ποσό που γράφει η προσφορά που έχετε λάβει) <span class="text-red-500">*</span>
+            <input type="text" id="Amount" name="Amount" class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </label>
 
         <!-- Payment Method -->
@@ -123,8 +419,7 @@
           <legend class="block text-gray-700 font-medium">Τρόπος πληρωμής: <span class="text-red-500">*</span></legend>
           <div class="flex items-center space-x-4 mt-2">
             <label class="flex items-center">
-              <input type="radio" id="bankTransfer" name="paymentMethod" value="bank" 
-                class="text-blue-500 focus:ring-blue-500" required checked>
+              <input type="radio" id="bankTransfer" name="paymentMethod" value="bank" class="text-blue-500 focus:ring-blue-500" required checked>
               <span class="ml-2 text-gray-700">Κατάθεση σε λογαριασμό Τράπεζας Πειραιώς</span>
             </label>
           </div>
@@ -132,49 +427,33 @@
 
         <!-- Bank Details Section -->
         <div id="bankDetails" class="mt-4">
-            <div class="bank-details" style="color: black;">
-                <h1 style="color: black; text-align: center;"><b>Στοιχεία Τράπεζας</b></h1>
-                <br>
-                <table style="margin-left: 10px;">
-                  <tbody>
-                        
-                    <tr>
-                        <td><p><strong>ΙΒΑΝ</strong></p></td>
-                        <td><p>GR65 0171 6040 0066 0415 1470 208</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><hr></td>
-                    </tr>
-                    <tr>
-                        <td><p><strong>Δικαιούχος</strong></p></td>
-                        <td><p>CHANGELAND CONSULTING IKE</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><hr></td>
-                    </tr>
-                    <tr>
-                        <td><p><strong>ΑΦΜ Δικαιούχου</strong></p></td>
-                        <td><p>801558738</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><hr></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><p><strong>Διεύθυνση</strong></p></td>
-                        <td><p> Λ. Συγγρού 196, Καλλιθέα 17671, Αττική, Ελλάδα</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><hr></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><p><strong>Αιτιολογία</strong></p></td>
-                        <td><p>Επαγγελματικό / Εταιρικό ΑΦΜ, Ονοματεπώνυμο</p></td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
+          <div class="bank-details" style="color: black; text-align: center;">
+            <h1 style="color: black; text-align: center;"><b>Στοιχεία Τράπεζας</b></h1>
+            <br>
+            
+            <table style="width: 100%; border-collapse: collapse; margin: 0 auto;">
+              <tr style="background-color: #f0f0f0;">
+                <td style="padding: 10px; border: 1px solid #000; font-weight: bold; text-align: left;">IBAN</td>
+                <td style="padding: 10px; border: 1px solid #000; text-align: left;">GR65 0171 6040 0066 0415 1470 208</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #000; font-weight: bold; text-align: left;">Δικαιούχος</td>
+                <td style="padding: 10px; border: 1px solid #000; text-align: left;">CHANGELAND CONSULTING IKE</td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td style="padding: 10px; border: 1px solid #000; font-weight: bold; text-align: left;">ΑΦΜ Δικαιούχου</td>
+                <td style="padding: 10px; border: 1px solid #000; text-align: left;">801558738</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #000; font-weight: bold; text-align: left;">Διεύθυνση</td>
+                <td style="padding: 10px; border: 1px solid #000; text-align: left;">Λ. Συγγρού 196, Καλλιθέα 17671, Αττική, Ελλάδα</td>
+              </tr>
+              <tr style="background-color: #f0f0f0;">
+                <td style="padding: 10px; border: 1px solid #000; font-weight: bold; text-align: left;">Αιτιολογία</td>
+                <td style="padding: 10px; border: 1px solid #000; text-align: left;">Επαγγελματικό / Εταιρικό ΑΦΜ, Ονοματεπώνυμο</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <!-- Proof Upload Section -->
@@ -184,61 +463,45 @@
             </label>
             <br>
             <div class="relative flex items-center justify-center border-dashed border-2 border-gray-300 p-4 rounded-lg bg-gray-50">
-            <input
-                type="file"
-                id="proof"
-                name="proof"
-                class="absolute inset-0 opacity-0 cursor-pointer"
-                required
-            />
+            <input type="file" id="proof" name="proof" class="absolute inset-0 opacity-0 cursor-pointer" required>
             <div id="fileDisplay" class="text-center">
                 <p class="text-gray-500 font-medium">Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε</p>
             </div>
             </div>
         </div>
-  
 
         <!-- Submit Button -->
         <div class="mt-6 text-center">
-            <button type="submit" 
-              class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
-              Ολοκλήρωση κράτησης της θέσης μου
-            </button>
-          </div>
+          <button type="submit" class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style="background-color: rgba(150, 111, 40, 0.845)">
+            Υποβολή
+          </button>
+        </div>
       </form>
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     const form = document.getElementById('webhookForm');
     const proofUpload = document.getElementById('proofUpload');
-    const bankTransfer = document.getElementById('bankTransfer');
-    const bankDetails = document.getElementById('bankDetails');
     const proofField = document.getElementById('proof');
     const fileDisplay = document.getElementById('fileDisplay');
-  
-    // Automatically show bank details since it's the only option
-    bankDetails.style.display = 'block';
   
     proofField.addEventListener('change', function () {
       if (proofField.files.length > 0) {
         const fileName = proofField.files[0].name;
-        fileDisplay.innerHTML = `
-          <p class="text-gray-700 font-medium">Selected file:</p>
-          <p class="text-gray-900 font-semibold">${fileName}</p>
-        `;
+        fileDisplay.innerHTML = 
+          `<p class="text-gray-700 font-medium">Selected file:</p>
+          <p class="text-gray-900 font-semibold">${fileName}</p>`;
       } else {
-        fileDisplay.innerHTML = `
-          <p class="text-gray-500 font-medium">Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε</p>
-        `;
+        fileDisplay.innerHTML = 
+          `<p class="text-gray-500 font-medium">Σύρετε και αφήστε το αποδεικτικό εδώ ή κλικ για να το φορτώσετε</p>`;
       }
     });
   
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       const formData = new FormData(form);
-      const webhookUrl = 'https://hook.eu2.make.com/v8epurteczh6vda4yxw4e7585xnndahe';
+      const webhookUrl = 'https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc';
   
       try {
         // Trigger webhook before redirect
@@ -258,7 +521,7 @@
       }
     });
   </script>
+
 </body>
 </html>
-Αφαίρεση επιλογής πληρωμής με κάρτα
-Update amount label text
+Changed payment details
