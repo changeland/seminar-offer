@@ -44,12 +44,6 @@
             opacity: 0.9;
         }
 
-        .hero-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
         .content {
             padding: 40px;
         }
@@ -202,6 +196,11 @@
             transform: translateY(0);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .error-message {
             color: #dc3545;
             font-size: 13px;
@@ -230,8 +229,6 @@
             <h1>© CHANGELAND</h1>
             <p>Αγορά Σεμιναρίου</p>
         </div>
-
-        <img src="https://via.placeholder.com/800x300/8B4513/FFFFFF?text=Changeland+Seminar" alt="Changeland Seminar" class="hero-image">
 
         <div class="content">
             <p style="text-align: center; color: #666; margin-bottom: 30px;">
@@ -337,7 +334,7 @@
                     <div class="error-message" id="fileError">Το αποδεικτικό πληρωμής είναι υποχρεωτικό</div>
                 </div>
 
-                <button type="submit" class="submit-btn">Υποβολή</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Υποβολή</button>
             </form>
         </div>
     </div>
@@ -355,6 +352,7 @@
 
         // Form submission
         const form = document.getElementById('paymentForm');
+        const submitBtn = document.getElementById('submitBtn');
         
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -393,26 +391,69 @@
                 return;
             }
 
-            // Prepare form data
-            const formData = new FormData(form);
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Παρακαλώ περιμένετε...';
 
             try {
-                // Trigger webhook before redirect
-                const response = await fetch('https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc', {
-                    method: 'POST',
-                    body: formData
-                });
+                // Convert file to base64
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onloadend = async function() {
+                    const base64File = reader.result;
+                    
+                    // Prepare JSON data
+                    const jsonData = {
+                        email: document.getElementById('email').value,
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        vat: document.getElementById('vat').value,
+                        companyName: document.getElementById('companyName').value,
+                        address: document.getElementById('address').value,
+                        city: document.getElementById('city').value,
+                        postalCode: document.getElementById('postalCode').value,
+                        amount: document.getElementById('amount').value,
+                        proofFile: base64File,
+                        fileName: file.name,
+                        formType: 'seminar',
+                        timestamp: new Date().toISOString()
+                    };
 
-                if (response.ok) {
-                    // Redirect to thank you page
-                    window.location.href = 'https://changeland.github.io/thankyou/';
-                } else {
-                    console.error('Webhook failed:', response.statusText);
-                    alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
-                }
+                    try {
+                        // Send to webhook
+                        const response = await fetch('https://hook.eu2.make.com/1s1nsmxzts8xivpn3amg7g2qddnqo9qc', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(jsonData)
+                        });
+
+                        if (response.ok) {
+                            // Redirect to thank you page
+                            window.location.href = 'https://changeland.github.io/thankyou/';
+                        } else {
+                            console.error('Webhook failed:', response.statusText);
+                            alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Υποβολή';
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Υποβολή';
+                    }
+                };
+                
+                reader.readAsDataURL(file);
+
             } catch (error) {
                 console.error('Error:', error);
                 alert('Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Υποβολή';
             }
         });
     </script>
